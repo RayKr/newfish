@@ -8,7 +8,9 @@ def first():
             b.append(a[i])
         i += 1
     print(len(b))
-    print(b)
+    for i in range(len(b)):
+        print(b[i], end=' ')
+    print()
 
 
 def checkIn(b, item):
