@@ -66,6 +66,8 @@ int main()
         if (d == cur->next->data)
         {
             // 删掉该结点
+            Node *temp = cur->next->next;
+            free(cur->next);
             cur->next = cur->next->next;
         }
         else
