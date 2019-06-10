@@ -36,57 +36,23 @@ void printLinkedList(LinkedList L)
     printf("\n");
 }
 
-int checkDeplicate(LinkedList L, Node *node)
-{
-    Node *cur = L->next;
-    while (cur != NULL && cur != node)
-    {
-        if (cur->data == node->data)
-        {
-            return 1;
-        }
-        cur = cur->next;
-    }
-    return 0;
-}
-
 int main()
 {
     int n, a, d;
     // 初始化头结点
-    Node *L = (Node *)malloc(sizeof(Node));
+    Node *L = (Node *)malloc(sizeof(Node)); // 申请头结点空间
     L->next = NULL;
-
+    // 依次输入并创建链表
     scanf("%d", &n);
     while (n--)
     {
         scanf("%d", &a);
-        // 头插法实现逆序
+        // 尾插法保证按插入顺序记录
         Node *c = (Node *)malloc(sizeof(Node));
         c->data = a;
         c->next = L->next; // 新结点的next指针指向原头结点
         L->next = c;       // 头结点next指向该结点
     }
-    printf("%d\n", getLinkedListLength(L));
-    printLinkedList(L);
-
-    // 删除重复数据
-    Node *cur = L;
-    while (cur->next != NULL)
-    {
-        if (checkDeplicate(L, cur->next))
-        {
-            // 删掉该结点
-            Node *temp = cur->next->next;
-            free(cur->next);
-            cur->next = cur->next->next;
-        }
-        else
-        {
-            cur = cur->next;
-        }
-    }
-    printf("%d\n", getLinkedListLength(L));
     printLinkedList(L);
 
     return 0;
