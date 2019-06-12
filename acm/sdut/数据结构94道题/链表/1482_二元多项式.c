@@ -275,6 +275,39 @@ int listPlus(Node *L)
 // 乘法
 int listMulti(Node *L)
 {
+    Node *cp, *temp;
+    Node *tail = L->next;
+    Node *nlist = initCycleNode();
+    if (List->next != List) // List不为空的情况
+    {
+        while (tail != L) // 外循环，遍历L
+        {
+            cp = List->next;
+            while (cp != List) // 内循环，遍历List
+            {
+                Node *n = (Node *)malloc(sizeof(Node));
+                n->data = cp->data * tail->data;
+                n->x = cp->x + tail->x;
+                n->y = cp->y + tail->y;
+                // 追加
+                nlist->prev->next = n;
+                n->prev = nlist->prev;
+                nlist->prev = n;
+                n->next = nlist;
+
+                cp = cp->next;
+            }
+
+            tail = tail->next;
+        }
+        temp = List;
+        List = nlist;
+        free(temp);
+    }
+    else
+    {
+        listPlus(L);
+    }
 
     return 0;
 }
@@ -293,6 +326,11 @@ int main()
         if (oper == '+')
         {
             listPlus(L);
+            merge();
+        }
+        else if (oper == '*')
+        {
+            listMulti(L);
             merge();
         }
     }
