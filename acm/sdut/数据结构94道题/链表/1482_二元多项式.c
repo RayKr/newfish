@@ -36,6 +36,7 @@ Node *initNode()
     return n;
 }
 
+// 按格式输出
 void printList(Node *Head)
 {
     Node *cur = Head->next;
@@ -72,6 +73,7 @@ void printList(Node *Head)
     printf("\n");
 }
 
+// 创建每行的链
 int createList(Node *L, char *s)
 {
     Node *tail = L;
@@ -143,10 +145,10 @@ int createList(Node *L, char *s)
     }
     tail->next = L;
     L->prev = tail;
-    // printList(L);
     return 0;
 }
 
+// 判断大小
 int isbiger(Node *p, Node *q)
 {
     int flag = 0;
@@ -196,6 +198,7 @@ int isbiger(Node *p, Node *q)
     return 0;
 }
 
+// 排序
 int sort()
 {
     Node *p = List->next->next; // p用来遍历每个Node
@@ -228,16 +231,9 @@ int sort()
     return 0;
 }
 
-int listPlus(Node *L)
+// 合并同类项
+int merge()
 {
-    // 合并链
-    List->prev->next = L->next;
-    L->next->prev = List->prev;
-    List->prev = L->prev;
-    L->prev->next = List;
-    // printList(List);
-    // 合并同类项
-    Node *cur = L->next;
     Node *p = List->next, *q, *temp;
     while (p != List)
     {
@@ -261,7 +257,25 @@ int listPlus(Node *L)
 
         p = p->next;
     }
-    
+    return 0;
+}
+
+// 加法
+int listPlus(Node *L)
+{
+    // 合并链
+    List->prev->next = L->next;
+    L->next->prev = List->prev;
+    List->prev = L->prev;
+    L->prev->next = List;
+
+    return 0;
+}
+
+// 乘法
+int listMulti(Node *L)
+{
+
     return 0;
 }
 
@@ -279,6 +293,7 @@ int main()
         if (oper == '+')
         {
             listPlus(L);
+            merge();
         }
     }
     // 排序
