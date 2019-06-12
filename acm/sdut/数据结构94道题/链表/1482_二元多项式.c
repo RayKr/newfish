@@ -30,7 +30,7 @@ Node *initNode()
     Node *n = (Node *)malloc(sizeof(Node));
     n->next = NULL;
     n->prev = NULL;
-    n->data = 1;
+    n->data = 0;
     n->x = 0;
     n->y = 0;
     return n;
