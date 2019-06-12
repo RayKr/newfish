@@ -19,7 +19,7 @@ Node *initCycleNode()
     Node *n = (Node *)malloc(sizeof(Node));
     n->next = n;
     n->prev = n;
-    n->data = 1;
+    n->data = 0;
     n->x = 0;
     n->y = 0;
     return n;
@@ -287,8 +287,14 @@ int listMulti(Node *L)
             {
                 Node *n = (Node *)malloc(sizeof(Node));
                 n->data = cp->data * tail->data;
-                n->x = cp->x + tail->x;
-                n->y = cp->y + tail->y;
+                if (n->data) {
+                    n->x = cp->x + tail->x;
+                    n->y = cp->y + tail->y;
+                } else {
+                    n->x = 0;
+                    n->y = 0;
+                }
+                
                 // 追加
                 nlist->prev->next = n;
                 n->prev = nlist->prev;
