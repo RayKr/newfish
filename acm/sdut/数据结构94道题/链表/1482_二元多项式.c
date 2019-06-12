@@ -317,27 +317,41 @@ int main()
     int n;
     char oper;
     char s[1000];
-    scanf("%d %s", &n, &oper);
-    List = initCycleNode();
-    Node *L = (Node *)malloc(sizeof(Node));
-    while (scanf("%s", s), s[0] != '0')
+    while (scanf("%d", &n), n)
     {
-        createList(L, s);
+        scanf("%c", &oper);
+        List = initCycleNode();
+        Node *L = initNode();
+        // 先判断上一个输入oper再进行循环
         if (oper == '+')
         {
-            listPlus(L);
-            merge();
+            while (n--)
+            {
+                scanf("%s", s);
+                createList(L, s);
+                listPlus(L);
+                merge();
+            }
+            // 排序
+            sort();
+            // 按格式打印
+            printList(List);
         }
         else if (oper == '*')
         {
-            listMulti(L);
-            merge();
+            while (n--)
+            {
+                scanf("%s", s);
+                createList(L, s);
+                listMulti(L);
+                merge();
+            }
+            // 排序
+            sort();
+            // 按格式打印
+            printList(List);
         }
     }
-    // 排序
-    sort();
-    // 按格式打印
-    printList(List);
 
     return 0;
 }
