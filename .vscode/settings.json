@@ -17,4 +17,11 @@
     "code-runner.preserveFocus": false,
     // 在运行代码之前保存文件
     "code-runner.saveFileBeforeRun": true,
+    "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
+        "stdlib.h": "c",
+        "ios": "c"
+    },
 }
