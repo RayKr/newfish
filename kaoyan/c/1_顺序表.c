@@ -86,6 +86,24 @@ int ListDelete(SeqList *L, int i, ElemType e)
     return 1;
 }
 
+/**
+ * 按值查找
+ * 时间复杂度：O(n)
+ * 返回的是序号，注意不是数组下标
+ */
+int LocateElem(SeqList *L, ElemType e)
+{
+    int i;
+    for (i = 0; i < L->length; i++)
+    {
+        if (L->data[i] == e)
+        {
+            return i + 1;
+        }
+    }
+    return 0;
+}
+
 int main()
 {
     return 0;

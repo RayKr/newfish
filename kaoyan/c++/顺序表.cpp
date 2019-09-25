@@ -13,6 +13,18 @@ typedef struct
 void InitList(SeqList &L)
 {
     L.data = new ElemType(InitSize);
+    L.MaxSize = InitSize;
+    L.lenght = 0;
+}
+
+int Length(SeqList &L)
+{
+    return L.lenght;
+}
+
+bool ListInsert(SeqList &L, int i, ElemType e) {
+
+    return true;
 }
 
 int main()
